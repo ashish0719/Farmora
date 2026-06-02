@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_weight_prices",
+  "info": {
+    "displayName": "weight-price"
+  },
+  "options": {},
+  "attributes": {
+    "price": {
+      "type": "decimal"
+    },
+    "weight": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
