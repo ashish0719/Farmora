@@ -17,10 +17,11 @@ function ProdCard({ product }) {
   return (
     <div className="border border-gray-300 rounded-lg p-4 m-6 w-64 md:w-70 shadow-md">
       <Image
-        src={product.image}
+         src={`http://localhost:1337${product.image[0].url}`}
         width={250}
         height={200}
         alt={product.name}
+        unoptimized
         className="rounded-lg object-cover w-full h-48"
       />
 

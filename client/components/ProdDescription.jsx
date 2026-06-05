@@ -113,12 +113,13 @@ function ProdDescription({ product }) {
               rounded-[24px]"
             >
               <Image
-                src={product.image}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${product.image[0].url}`}
                 alt={product.name}
                 fill
                 className="
                 object-cover
                 rounded-[24px]"
+                unoptimized
               />
             </div>
           </div>

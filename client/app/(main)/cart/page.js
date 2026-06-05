@@ -75,10 +75,11 @@ export default function CartPage() {
                         overflow-hidden"
                       >
                         <Image
-                          src={item.image}
+                          src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${item.image[0].url}`}
                           alt={item.name}
                           fill
                           className="object-cover"
+                          unoptimized
                         />
                       </div>
 

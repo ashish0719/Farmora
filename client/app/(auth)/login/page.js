@@ -6,6 +6,7 @@ import { loginUser } from "@/lib/AuthApi";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
+
 export default function LoginPage() {
   const [identifier, setIdentifier] = useState("");
   const { login } = useAuth();
@@ -52,10 +53,17 @@ export default function LoginPage() {
         <div className="hidden md:flex flex-col justify-center px-10 py-12 bg-[linear-gradient(to_bottom,#F6DD98,#E8C46A)]">
           <p className="text-[#5F4A2F] mb-3">Welcome Back</p>
 
-          <h1 className="text-5xl font-bold text-[#2E1F12] leading-tight">
-            Farm
-            <span className="text-[#E88A17]">ora</span>
-          </h1>
+          <div className="flex items-center gap-3 mb-5">
+  <img
+    src="/Images/Logo.png"
+    alt="Farmora"
+    className="h-40 w-auto"
+  />
+
+  <h1 className="text-5xl font-bold text-[#2E1F12]">
+    Farm<span className="text-[#E88A17]">ora</span>
+  </h1>
+</div>
 
           <p className="mt-5 text-[#4A3A2A] leading-7">
             Login and continue your fresh shopping experience with us.

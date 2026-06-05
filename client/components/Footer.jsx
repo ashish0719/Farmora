@@ -1,3 +1,8 @@
+"use client";
+
+import React from "react";
+import {useEffect, useState} from "react";
+import FooterApi from "@/lib/FooterApi";
 import {
   FaInstagram,
   FaFacebookF,
@@ -6,6 +11,25 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
+
+  const [footerData, setFooterData] = useState(null);
+
+  useEffect(()=>{
+    const fetchFooter = async()=>{
+      const data = await FooterApi();
+      
+      setFooterData(data);
+    };
+    fetchFooter();
+  }, []);
+
+  const socialIcons = {
+  Instagram: <FaInstagram />,
+  FaceBook: <FaFacebookF />,
+  Twitter: <FaTwitter />,
+  LinkedIn: <FaLinkedinIn />,
+};
+
   return (
     <footer className="bg-[#FDF3DC] border-t border-[#EBDDBA]">
       <div
@@ -27,58 +51,29 @@ export default function Footer() {
             </h2>
 
             <p className="text-sm text-[#6D5B45] leading-6">
-              Fresh organic fruits and farm products delivered straight to your
-              doorstep with freshness you can trust.
+              {footerData?.brandDescription}
             </p>
 
             <div className="flex gap-3 pt-2">
-              <div
-                className="w-9 h-9 rounded-full
-                bg-[#F7E6B7]
-                flex items-center justify-center
-                text-[#2E1F12]
-                hover:bg-[#E88A17]
-                hover:text-white
-                transition"
-              >
-                <FaInstagram />
-              </div>
-
-              <div
-                className="w-9 h-9 rounded-full
-                bg-[#F7E6B7]
-                flex items-center justify-center
-                text-[#2E1F12]
-                hover:bg-[#E88A17]
-                hover:text-white
-                transition"
-              >
-                <FaFacebookF />
-              </div>
-
-              <div
-                className="w-9 h-9 rounded-full
-                bg-[#F7E6B7]
-                flex items-center justify-center
-                text-[#2E1F12]
-                hover:bg-[#E88A17]
-                hover:text-white
-                transition"
-              >
-                <FaTwitter />
-              </div>
-
-              <div
-                className="w-9 h-9 rounded-full
-                bg-[#F7E6B7]
-                flex items-center justify-center
-                text-[#2E1F12]
-                hover:bg-[#E88A17]
-                hover:text-white
-                transition"
-              >
-                <FaLinkedinIn />
-              </div>
+             {footerData?.socialLinks?.map((social) => (
+    <a
+      key={social.id}
+      href={social.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        w-9 h-9 rounded-full
+        bg-[#F7E6B7]
+        flex items-center justify-center
+        text-[#2E1F12]
+        hover:bg-[#E88A17]
+        hover:text-white
+        transition
+      "
+    >
+      {socialIcons[social.platform]}
+    </a>
+  ))}
             </div>
           </div>
 
@@ -87,18 +82,12 @@ export default function Footer() {
             <h3 className="font-semibold text-[#2E1F12] mb-4">Quick Links</h3>
 
             <ul className="space-y-3 text-[#6D5B45] text-sm">
-              <li className="hover:text-[#E88A17] cursor-pointer transition">
-                Home
-              </li>
-              <li className="hover:text-[#E88A17] cursor-pointer transition">
-                Shop
-              </li>
-              <li className="hover:text-[#E88A17] cursor-pointer transition">
-                Categories
-              </li>
-              <li className="hover:text-[#E88A17] cursor-pointer transition">
-                About Us
-              </li>
+
+              {footerData?.quickLinks.map((link) => (
+                <li key={link.id} className="hover:text-[#E88A17] cursor-pointer transition">
+                  {link.label}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -119,9 +108,9 @@ export default function Footer() {
             <h3 className="font-semibold text-[#2E1F12] mb-4">Contact</h3>
 
             <div className="space-y-3 text-sm text-[#6D5B45]">
-              <p>📍 Chandigarh, India</p>
-              <p>📞 +91 98765 43210</p>
-              <p>✉ support@farmora.com</p>
+              <p>📍 {footerData?.contactInfo.address}</p>
+              <p>📞 {footerData?.contactInfo.phone}</p>
+              <p>✉ {footerData?.contactInfo.email}</p>
             </div>
           </div>
         </div>
