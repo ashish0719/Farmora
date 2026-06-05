@@ -24,9 +24,6 @@
     "description": {
       "type": "text"
     },
-    "image": {
-      "type": "text"
-    },
     "stock": {
       "type": "decimal"
     },
@@ -34,6 +31,25 @@
       "type": "component",
       "component": "shared.weight-price",
       "repeatable": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "featured": {
+      "type": "boolean"
     }
   }
 }

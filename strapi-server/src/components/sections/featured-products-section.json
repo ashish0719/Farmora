@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_featured_products_sections",
+  "info": {
+    "displayName": "Featured Products Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    }
+  },
+  "config": {}
+}

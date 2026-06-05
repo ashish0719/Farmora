@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_hero_sections",
+  "info": {
+    "displayName": "Hero Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "hero_slides": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hero-slide.hero-slide"
+    }
+  },
+  "config": {}
+}
