@@ -4,15 +4,12 @@ Farmora is a full-stack fruit e-commerce application built using **Next.js** and
 
 ## 🚀 Live Demo
 
-### Frontend
+## Live Demo
 
-Frontend URL: `https://your-frontend-url.vercel.app`
+## Live Demo
 
-### Backend API
-
-Backend URL: `https://your-backend-url.onrender.com`
-
-
+- [Frontend](https://farmora-hazel.vercel.app/)
+- [Backend API](https://farmora-onn8.onrender.com)
 
 ---
 
