@@ -12,6 +12,7 @@ export default function Page() {
   useEffect(() => {
     async function fetchProducts() {
       const data = await getProducts();
+      console.log("Fetched products:", data);
       setProducts(data);
     }
 

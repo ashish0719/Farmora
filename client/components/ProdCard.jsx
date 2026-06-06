@@ -8,8 +8,17 @@ import { useRouter } from "next/navigation";
 function ProdCard({ product }) {
   const router = useRouter();
 
+
+  
+
   const handleCart = () => {
     router.push(`/products/${product.slug}`);
+   console.log("Image URL:", product.image[0].url);
+console.log(
+  "Final URL:",
+  `${process.env.NEXT_PUBLIC_STRAPI_URL}${product.image[0].url}`
+
+);
   };
 
   const basePrice = product.weights?.[0]?.price || 0;
@@ -17,13 +26,18 @@ function ProdCard({ product }) {
   return (
     <div className="border border-gray-300 rounded-lg p-4 m-6 w-64 md:w-70 shadow-md">
       <Image
-         src={`http://localhost:1337${product.image[0].url}`}
+         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${product.image[0].url}`}
         width={250}
         height={200}
         alt={product.name}
         unoptimized
         className="rounded-lg object-cover w-full h-48"
       />
+
+
+
+
+
 
       <div className="flex justify-between items-center mt-3">
         <h2 className="text-lg font-semibold">{product.name}</h2>
